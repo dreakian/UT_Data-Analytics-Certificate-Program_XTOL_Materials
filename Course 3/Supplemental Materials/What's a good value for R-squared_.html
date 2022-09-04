@@ -1,0 +1,1940 @@
+
+<!-- saved from url=(0042)https://people.duke.edu/~rnau/rsquared.htm -->
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 15">
+<meta name="Originator" content="Microsoft Word 15">
+<link rel="File-List" href="https://people.duke.edu/~rnau/rsquared_files/filelist.xml">
+<link rel="Edit-Time-Data" href="https://people.duke.edu/~rnau/rsquared_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>What's a good value for R-squared?</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Bob Nau</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>FacDS - Bob Nau</o:LastAuthor>
+  <o:Revision>83</o:Revision>
+  <o:TotalTime>3655</o:TotalTime>
+  <o:Created>2014-09-17T19:31:00Z</o:Created>
+  <o:LastSaved>2020-08-18T15:53:00Z</o:LastSaved>
+  <o:Pages>15</o:Pages>
+  <o:Words>5008</o:Words>
+  <o:Characters>28551</o:Characters>
+  <o:Company>Duke University</o:Company>
+  <o:Lines>237</o:Lines>
+  <o:Paragraphs>66</o:Paragraphs>
+  <o:CharactersWithSpaces>33493</o:CharactersWithSpaces>
+  <o:Version>16.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel="themeData" href="https://people.duke.edu/~rnau/rsquared_files/themedata.thmx">
+<link rel="colorSchemeMapping" href="https://people.duke.edu/~rnau/rsquared_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="375">
+  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 9"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="header"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footer"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index heading"/>
+  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of figures"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope return"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="line number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="page number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of authorities"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="macro"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="toa heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 5"/>
+  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Closing"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Signature"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Message Header"/>
+  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Salutation"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Date"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Note Heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Block Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="FollowedHyperlink"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Document Map"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Plain Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="E-mail Signature"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Top of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Bottom of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal (Web)"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Acronym"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Cite"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Code"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Definition"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Keyboard"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Sample"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Typewriter"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Variable"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Table"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation subject"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="No List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Contemporary"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Elegant"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Professional"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Balloon Text"/>
+  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Theme"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
+  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
+  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
+  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
+  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
+  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
+  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hashtag"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Unresolved Mention"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536869121 1107305727 33554432 0 415 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1593833729 1073750107 16 0 415 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536869121 64767 1 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+h2
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma",sans-serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Calibri Light",sans-serif;
+	mso-ascii-font-family:"Calibri Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Calibri Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2E74B5;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	font-family:Consolas;
+	mso-ascii-font-family:Consolas;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Consolas;
+	mso-bidi-font-family:Consolas;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma",sans-serif;
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:144395593;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1964392600 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.0in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.5in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:5.0in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:5.5in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:6.0in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:6.5in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:7.0in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:7.5in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:8.0in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:1675644414;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1998403412 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:3.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:4.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:5.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:5.75in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:6.25in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:6.75in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:7.25in;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:7.75in;
+	text-indent:-.25in;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman",serif;}
+</style>
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics -->
+<meta name="AUTHOR" content="Fuqua School of Business">
+
+<script src="./What&#39;s a good value for R-squared__files/sdk.js.download" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="./What&#39;s a good value for R-squared__files/sdk.js(1).download"></script><script async="" src="./What&#39;s a good value for R-squared__files/js">
+</script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122606262-1');
+</script>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}</style></head>
+
+<body lang="EN-US" link="blue" vlink="purple" style="tab-interval:.5in">
+
+<div class="WordSection1">
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:1"><span style="font-size:10.0pt"><script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script></span><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_20" o:spid="_x0000_s1026" type="#_x0000_t75"
+ href="411home.htm" style='position:absolute;left:0;text-align:left;
+ margin-left:14.4pt;margin-top:0;width:210.25pt;height:109.45pt;z-index:251659264;
+ visibility:visible;mso-wrap-style:square;mso-width-percent:0;
+ mso-height-percent:0;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;
+ mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;
+ mso-position-horizontal:absolute;mso-position-horizontal-relative:text;
+ mso-position-vertical:absolute;mso-position-vertical-relative:text;
+ mso-width-percent:0;mso-height-percent:0;mso-width-relative:margin;
+ mso-height-relative:margin' o:button="t">
+ <v:imagedata src="411logo.gif"/>
+</v:shape><![endif]--><!--[if !vml]--><span style="mso-ignore:vglayout;position:
+absolute;z-index:251659264;left:0px;margin-left:19px;margin-top:0px;width:280px;
+height:146px"><a href="https://people.duke.edu/~rnau/411home.htm"><img border="0" width="280" height="146" src="./What&#39;s a good value for R-squared__files/411logo.gif" title="" v:shapes="Picture_x0020_20"></a></span><!--[endif]--><a name="top"></a><b style="mso-bidi-font-weight:normal"><span style="font-size:
+10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:#000099">Linear regression models<o:p></o:p></span></b></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif"><a href="https://people.duke.edu/~rnau/Notes_on_linear_regression_analysis--Robert_Nau.pdf">Notes on linear
+regression analysis (pdf file)</a><span style="color:blue"><o:p></o:p></span></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif;color:blue"><a href="https://people.duke.edu/~rnau/regintro.htm">Introduction
+to linear regression analysis</a> <o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:1"><span class="MsoHyperlink"><a href="https://people.duke.edu/~rnau/mathreg.htm"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Mathematics
+of simple regression</span></a></span><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;color:blue"><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:1"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif;color:blue">Regression examples<o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:1;mso-list:l0 level1 lfo2"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:#0000BF"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:blue"><a href="https://people.duke.edu/~rnau/regexbaseball.htm">Baseball batting averages</a></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;color:#0000BF"><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:2;mso-list:l0 level1 lfo2"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:blue"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:blue"><a href="https://people.duke.edu/~rnau/regex.htm">Beer sales vs. price, part 1: descriptive
+analysis</a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:2;mso-list:l0 level1 lfo2"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:blue"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:blue"><a href="https://people.duke.edu/~rnau/regex2.htm">Beer sales vs. price, part 2: fitting a simple
+model</a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:1;mso-list:l0 level1 lfo2"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:blue"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:blue"><a href="https://people.duke.edu/~rnau/regex3.htm">Beer sales vs. price, part 3: transformations
+of variables</a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:1;mso-list:l0 level1 lfo2"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:#0000BF"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:#0000BF"><a href="https://people.duke.edu/~rnau/regex4.htm"><span style="color:#0000BF">Beer sales vs.
+price, part 4: additional predictors</span></a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:1;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:#0000BF"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:blue"><a href="https://people.duke.edu/~rnau/NC_natural_gas_consumption_analysis.xlsx">NC natural gas
+consumption vs. temperature</a></span><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;color:#0000BF"><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.75in;
+margin-bottom:.0001pt;text-indent:-.25in;mso-outline-level:1;mso-list:l1 level1 lfo4"><!--[if !supportLists]--><span style="font-size:10.0pt;font-family:Symbol;mso-fareast-font-family:Symbol;
+mso-bidi-font-family:Symbol;color:blue"><span style="mso-list:Ignore">·<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+color:blue"><a href="https://regressit.com/data.html">More regression datasets
+at regressit.com</a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif"><a href="https://people.duke.edu/~rnau/411regou.htm">What to look for in
+regression output</a> <o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif;color:#AFABAB;mso-themecolor:background2;
+mso-themeshade:191;mso-style-textfill-fill-color:#AFABAB;mso-style-textfill-fill-themecolor:
+background2;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
+lumm=75000"><a href="https://people.duke.edu/~rnau/rsquared.htm"><span style="color:#AFABAB;mso-themecolor:
+background2;mso-themeshade:191;mso-style-textfill-fill-color:#AFABAB;
+mso-style-textfill-fill-themecolor:background2;mso-style-textfill-fill-alpha:
+100.0%;mso-style-textfill-fill-colortransforms:lumm=75000">What’s a good
+value for R-squared?</span></a></span><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif"><br>
+<a href="https://people.duke.edu/~rnau/compare.htm">What's the bottom line? How to compare models</a> <br>
+<a href="https://people.duke.edu/~rnau/testing.htm">Testing the assumptions of linear regression</a><br>
+<span style="color:blue"><a href="https://people.duke.edu/~rnau/regnotes.htm">Additional notes on regression
+analysis</a></span> <br>
+<a href="https://people.duke.edu/~rnau/regstep.htm">Stepwise and all-possible-regressions</a><br>
+<a href="https://people.duke.edu/~rnau/Simple_regression_formulas_and_RegressIt_model.xlsx">Excel file with
+simple regression formulas</a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif"><a href="https://people.duke.edu/~rnau/Regression_formulas_in_matrix_form.xlsx">Excel file with regression
+formulas in matrix form</a><o:p></o:p></span></p>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:2"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif"><a href="https://regressit.com/RegressItLogisticNotes.pdf">Notes on <i style="mso-bidi-font-style:normal">logistic</i> regression (new!)</a><br style="mso-special-character:line-break">
+<!--[if !supportLineBreakNewLine]--><br style="mso-special-character:line-break">
+<!--[endif]--><o:p></o:p></span></p>
+
+<p><a name="_Hlk47432820"><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">If you use Excel
+in your work or in your teaching to any extent, you should check out the latest
+release of RegressIt, a free Excel add-in for linear and logistic regression.
+See it at </span></i></b></a><a href="https://regressit.com/index.html"><span style="mso-bookmark:_Hlk47432820"><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">regressit.com</span></i></b></span><span style="mso-bookmark:_Hlk47432820"></span></a><span style="mso-bookmark:_Hlk47432820"><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:
+&quot;Times New Roman&quot;">. </span></i></b></span><span style="mso-bookmark:_Hlk47432820"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:
+&quot;Times New Roman&quot;">The linear regression version runs on both PC's and Macs and
+has a richer and easier-to-use interface and much better designed output than
+other add-ins for statistical analysis. It may make a good complement if not a
+substitute for whatever regression software you are currently using,
+Excel-based or otherwise. <b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal">RegressIt is an excellent tool for
+interactive presentations, online teaching of regression, and development of
+videos of examples of regression modeling. </i></b><span style="mso-spacerun:yes">&nbsp;</span>It includes extensive built-in
+documentation and pop-up teaching notes as well as some novel features to
+support systematic grading and auditing of student work on a large scale. There
+is a separate </span></span><a href="https://regressit.com/logistic.html"><span style="mso-bookmark:_Hlk47432820"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">logistic
+regression</span></span><span style="mso-bookmark:_Hlk47432820"></span></a><span style="mso-bookmark:_Hlk47432820"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;"> version with
+highly interactive tables and charts that runs on PC's. RegressIt also now
+includes a </span></span><a href="https://regressit.com/r-interface.html"><span style="mso-bookmark:_Hlk47432820"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">two-way
+interface with R</span></span><span style="mso-bookmark:_Hlk47432820"></span></a><span style="mso-bookmark:_Hlk47432820"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;"> that allows
+you to run linear and logistic regression models in R without writing any code
+whatsoever.</span></span><span style="mso-bookmark:_Hlk47432820"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"> <o:p></o:p></span></span></p>
+
+<p class="MsoNormal" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:auto"><span style="mso-bookmark:_Hlk47432820"><b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;">If you have
+been using Excel's own Data Analysis add-in for regression (Analysis Toolpak),
+this is the time to stop.</span></i></b></span><span style="mso-bookmark:_Hlk47432820"><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:&quot;Times New Roman&quot;"> It has not
+changed since it was first introduced in 1993, and it was a poor design even
+then. It's a toy (a clumsy one at that), not a tool for serious work. Visit
+this page for a discussion: </span></i></span><a href="https://regressit.com/analysis-toolpak-problems.html"><span style="mso-bookmark:_Hlk47432820"><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-fareast-font-family:
+&quot;Times New Roman&quot;">What's wrong with Excel's Analysis Toolpak for regression</span></i></span><span style="mso-bookmark:_Hlk47432820"></span></a><span style="mso-bookmark:_Hlk47432820"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p></o:p></span></span></p>
+
+<span style="mso-bookmark:_Hlk47432820"></span>
+
+<p style="margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:3.5in;
+margin-bottom:.0001pt;mso-outline-level:1"><b style="mso-bidi-font-weight:normal"><span style="font-size:14.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p>&nbsp;</o:p></span></b></p>
+
+<h2 style="margin:0in;margin-bottom:.0001pt"><span style="font-size:14.0pt;
+font-family:&quot;Verdana&quot;,sans-serif;color:#000099;mso-bidi-font-weight:normal">What’s
+a good value for R-squared?</span><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p></o:p></span></h2>
+
+<div class="MsoNormal" align="center" style="text-align:center"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">
+
+<hr size="2" width="100%" align="center">
+
+</span></div>
+
+<p class="MsoNormal"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+mso-fareast-font-family:&quot;Times New Roman&quot;"><a href="https://people.duke.edu/~rnau/rsquared.htm#percentexplained">Percent
+of variance explained vs. percent of standard deviation explained</a><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+mso-fareast-font-family:&quot;Times New Roman&quot;"><a href="https://people.duke.edu/~rnau/rsquared.htm#example">An example in
+which R-squared is a poor guide to analysis</a><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;
+mso-fareast-font-family:&quot;Times New Roman&quot;"><a href="https://people.duke.edu/~rnau/rsquared.htm#punchline">Guidelines for
+interpreting R-squared</a><o:p></o:p></span></p>
+
+<div class="MsoNormal" align="center" style="text-align:center"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">
+
+<hr size="2" width="100%" align="center">
+
+</span></div>
+
+<p><a name="percentexplained"></a><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The
+question is often asked: "what's a good value for R-squared?" or
+“how big does R-squared need to be for the regression model to be
+valid?”<span style="mso-spacerun:yes">&nbsp; </span>Sometimes the claim
+is even made: "a model is not useful unless its R-squared is at least
+x", where x may be some fraction greater than 50%.<span style="mso-spacerun:yes">&nbsp; </span>The correct response to this question is
+polite laughter followed by: "That depends!"<span style="mso-spacerun:yes">&nbsp; </span>A former student of mine landed a job at
+a top consulting firm by being the only candidate who gave that answer during
+his interview.</span><span style="font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">R-squared is
+the “percent of variance explained” by the model.<span style="mso-spacerun:yes">&nbsp; </span>That is,<b style="mso-bidi-font-weight:
+normal"> R-squared is the fraction by which the variance of the errors is less
+than the variance of the dependent variable.<span style="mso-spacerun:yes">&nbsp; </span></b>(The latter number would be the
+error variance for a constant-only model, which merely predicts that every
+observation will equal the sample mean.)<span style="mso-spacerun:yes">&nbsp;
+</span>It is called R-squared because in a simple regression model it is just <i style="mso-bidi-font-style:normal">the square of the correlation</i> between
+the dependent and independent variables, which is commonly denoted by
+“r”.<span style="mso-spacerun:yes">&nbsp; </span>In a <i style="mso-bidi-font-style:normal">multiple</i> regression model R-squared is
+determined by pairwise correlations among <i style="mso-bidi-font-style:normal">all</i>
+the variables, including correlations of the independent variables with each
+other as well as with the dependent variable.<span style="mso-spacerun:yes">&nbsp; </span>In the latter setting, the square root of
+R-squared is known as “multiple R”, and it is equal to the
+correlation between the dependent variable and the regression model’s
+predictions for it.<span style="mso-spacerun:yes">&nbsp; </span>(Note: if the
+model does not include a constant, which is a so-called “regression
+through the origin”, then R-squared has a different definition.<span style="mso-spacerun:yes">&nbsp; </span>See <a href="http://people.duke.edu/~rnau/regnotes.htm">this page</a> for more
+details. <i style="mso-bidi-font-style:normal">You cannot compare R-squared
+between a model that includes a constant and one that does not</i>.)<o:p></o:p></span></p>
+
+<p><span class="GramE"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Generally</span></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"> it is better to look
+at <b style="mso-bidi-font-weight:normal"><i style="mso-bidi-font-style:normal">adjusted
+R-squared</i></b> rather than R-squared and to look at the <b style="mso-bidi-font-weight:
+normal"><i style="mso-bidi-font-style:normal">standard error of the regression</i></b>
+rather than the standard deviation of the errors.<span style="mso-spacerun:yes">&nbsp; </span>These are <i style="mso-bidi-font-style:
+normal">unbiased </i>estimators that correct for the sample size and numbers of
+coefficients estimated. Adjusted R-squared is always smaller than R-squared,
+but the difference is usually very small unless you are trying to estimate too
+many coefficients from too small a sample in the presence of too much noise.
+Specifically, <b style="mso-bidi-font-weight:normal">adjusted R-squared is
+equal to 1 minus (n - 1)<span class="GramE">/(</span>n – k - 1) times
+1-minus-R-squared</b>, where n is the sample size and k is the number of
+independent variables.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>(It is
+possible that adjusted R-squared is <i>negative</i> if the model is too complex
+for the sample size and/or the independent variables have too little predictive
+value, and some software just reports that adjusted R-squared is zero in that
+case.) Adjusted R-squared bears the same relation to the standard error of the
+regression that R-squared bears to the standard deviation of the errors: one
+necessarily goes up when the other goes down for models fitted to the same
+sample of the same dependent variable.<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Now, <b style="mso-bidi-font-weight:normal">what is the relevant variance that requires
+explanation, and how much or how little explanation is necessary or useful?</b><span style="mso-spacerun:yes">&nbsp;&nbsp; </span>There is a huge range of
+applications for linear regression analysis in science, medicine, engineering,
+economics, finance, marketing, manufacturing, sports, <span class="GramE">etc..</span><span style="mso-spacerun:yes">&nbsp; </span>In some <span class="GramE">situations</span>
+the variables under consideration have very strong and intuitively obvious
+relationships, while in other situations you may be looking for very weak
+signals in very noisy data.<span style="mso-spacerun:yes">&nbsp; </span>The
+decisions that depend on the analysis could have either narrow or wide margins
+for prediction error, and the stakes could be small or large.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>For example, in medical research,
+a new drug treatment might have highly variable effects on individual patients,
+in comparison to alternative treatments, and yet have statistically significant
+benefits in an experimental study of thousands of subjects.<span style="mso-spacerun:yes">&nbsp; </span>That is to say, the amount of variance
+explained when predicting individual outcomes could be small, and yet the
+estimates of the coefficients that measure the drug’s effects could be
+significantly different from zero (as measured by low P-values) in a large
+sample.<span style="mso-spacerun:yes">&nbsp; </span>A result like this could
+save many lives over the long run and be worth millions of dollars in profits
+if it results in the drug’s approval for widespread use.<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Even in the
+context of a single statistical decision problem, there may be many ways to
+frame the analysis, resulting in different standards and expectations for the
+amount of variance to be explained in the linear regression stage.<span style="mso-spacerun:yes">&nbsp; </span>We have seen by now that there are many <i>transformations</i>
+that may be applied to a variable before it is used as a dependent variable in
+a regression model: deflation, logging, seasonal adjustment, differencing. All
+of these transformations will change the variance and may also change the <i>units</i>
+in which variance is measured. Logging completely changes the the units of measurement:
+roughly speaking, the error measures become percentages rather than absolute
+amounts, as explained <a href="http://people.duke.edu/~rnau/411log.htm">here</a>.
+Deflation and seasonal adjustment also change the units of measurement, and
+differencing usually reduces the variance dramatically when applied to
+nonstationary time series data. Therefore, if the dependent variable in the
+regression model has already been transformed in some way, it is possible that
+much of the variance has already been "explained" merely by that
+process.<span style="mso-spacerun:yes">&nbsp; </span>With respect to which
+variance should improvement be measured in such cases: that of the original
+series, the deflated series, the seasonally adjusted series, the differenced
+series, or the logged series?<span style="mso-spacerun:yes">&nbsp; </span><i style="mso-bidi-font-style:normal">You cannot meaningfully compare R-squared
+between models that have used different transformations of the dependent
+variable,</i> as the example below will illustrate.<o:p></o:p></span></p>
+
+<p><a name="table"></a><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Moreover,
+variance is a hard quantity to think about because it is measured in <i style="mso-bidi-font-style:normal">squared units</i> (dollars squared, beer
+cans squared….).<span style="mso-spacerun:yes">&nbsp; </span>It is easier
+to think in terms of <i style="mso-bidi-font-style:normal">standard deviations</i>,
+because they are measured in the same units as the variables and they directly
+determine the widths of confidence intervals.<span style="mso-spacerun:yes">&nbsp; </span>So, it is instructive to also consider
+the <b style="mso-bidi-font-weight:normal">“percent of standard deviation
+explained,”</b> i.e., the percent by which the standard deviation of the
+errors is less than the standard deviation of the dependent variable.<span style="mso-spacerun:yes">&nbsp; </span>This is equal to <b style="mso-bidi-font-weight:
+normal">one minus the square root of 1-minus-R-squared</b>.<span style="mso-spacerun:yes">&nbsp; </span>Here is a table that shows the
+conversion:<o:p></o:p></span></p>
+
+<p><span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape id="Picture_x0020_26"
+ o:spid="_x0000_i1236" type="#_x0000_t75" style='width:358.5pt;height:260.25pt;
+ visibility:visible;mso-wrap-style:square' o:bordertopcolor="black"
+ o:borderleftcolor="black" o:borderbottomcolor="black" o:borderrightcolor="black">
+ <v:imagedata src="rsquared_files/image001.png" o:title=""/>
+ <w:bordertop type="single" width="10"/>
+ <w:borderleft type="single" width="10"/>
+ <w:borderbottom type="single" width="10"/>
+ <w:borderright type="single" width="10"/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="480" height="349" src="./What&#39;s a good value for R-squared__files/image029.jpg" v:shapes="Picture_x0020_26"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">For example,
+if the model’s R-squared is 90%, the variance of its errors is 90% less
+than the variance of the dependent variable and the standard deviation of its
+errors is 68% less than the standard deviation of the dependent variable.<span style="mso-spacerun:yes">&nbsp; </span>That is, the standard deviation of the
+regression model’s errors is about 1/3 the size of the standard deviation
+of the errors that you would get with a constant-only model.<span style="mso-spacerun:yes">&nbsp; </span>That’s very good, but it
+doesn’t sound quite as impressive as “NINETY PERCENT
+EXPLAINED!”.<span style="mso-spacerun:yes">&nbsp; </span><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">If the
+model’s R-squared is 75%, the standard deviation of the errors is exactly
+one-half of the standard deviation of the dependent variable.<span style="mso-spacerun:yes">&nbsp; </span>Now, suppose that the addition of
+another variable or two to this model increases R-squared to 76%.<span style="mso-spacerun:yes">&nbsp; </span>That’s better, right? Well, by the
+formula above, this increases the percent of standard deviation explained from
+50% to 51%, which means the standard deviation of the errors is reduced from
+50% of that of the constant-only model to 49%, a shrinkage of 2% in relative
+terms.<span style="mso-spacerun:yes">&nbsp; </span>Confidence intervals for
+forecasts produced by the second model would therefore be about 2% narrower
+than those of the first model, on average, not enough to notice on a
+graph.<span style="mso-spacerun:yes">&nbsp; </span>You should ask
+yourself:<span style="mso-spacerun:yes">&nbsp; </span>is that worth the
+increase in model complexity? <o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">An increase
+in R-squared from 75% to 80% would reduce the error standard deviation by about
+10% in relative terms.<span style="mso-spacerun:yes">&nbsp; </span>That begins
+to rise to the level of a perceptible reduction in the widths of confidence
+intervals. But don’t forget, confidence intervals are realistic guides to
+the accuracy of predictions <i style="mso-bidi-font-style:normal">only if the
+model’s assumptions are correct</i>.<span style="mso-spacerun:yes">&nbsp;
+</span>When adding<span style="mso-spacerun:yes">&nbsp; </span>more variables
+to a model, you need to think about the cause-and-effect assumptions that
+implicitly go with them, and you should also look at how their addition changes
+the estimated coefficients of other variables.<span style="mso-spacerun:yes">&nbsp; </span>Do they become easier to explain, or
+harder?<span style="mso-spacerun:yes">&nbsp; </span>And do the residual stats
+and plots indicate that the model’s assumptions are OK?<span style="mso-spacerun:yes">&nbsp; </span>If they aren’t, then you
+shouldn’t be obsessing over small improvements in R-squared anyway.<span style="mso-spacerun:yes">&nbsp; </span>Your problems lie elsewhere.<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Another
+handy rule of thumb: <i style="mso-bidi-font-style:normal">for small values
+(R-squared less than 25%), the percent of standard deviation explained is
+roughly one-half of the percent of variance explained.</i> So, for example, a
+model with an R-squared of 10% yields errors that are 5% smaller than those of
+a constant-only model, on average.<o:p></o:p></span></p>
+
+<p><b style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif">How big an R-squared is “big
+enough”, or cause for celebration or despair? </span></b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><span style="mso-spacerun:yes">&nbsp;</span>That depends on the decision-making
+situation, and it depends on your objectives or needs, and it depends on how
+the dependent variable is defined.<span style="mso-spacerun:yes">&nbsp;
+</span>In some situations it might be reasonable to hope and expect to explain
+99% of the variance, or equivalently 90% of the standard deviation of the
+dependent variable.<span style="mso-spacerun:yes">&nbsp; </span>In other cases,
+you might consider yourself to be doing very well if you explained 10% of the
+variance, or equivalently 5% of the standard deviation, or perhaps even
+less.<span style="mso-spacerun:yes">&nbsp; </span>The following section gives
+an example that highlights these issues.<span style="mso-spacerun:yes">&nbsp;
+</span>If you want to skip the example and go straight to the concluding
+comments, click <a href="https://people.duke.edu/~rnau/rsquared.htm#punchline">here</a>.<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><a href="https://people.duke.edu/~rnau/rsquared.htm#top">Return to top of page.</a><o:p></o:p></span></p>
+
+<div class="MsoNormal" align="center" style="text-align:center"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">
+
+<hr size="2" width="100%" align="center">
+
+</span></div>
+
+<p><a name="example"></a><b style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">An example in which
+R-squared is a poor guide to analysis:</span></b><span style="font-size:10.0pt;
+font-family:&quot;Verdana&quot;,sans-serif"><span style="mso-spacerun:yes">&nbsp;
+</span>Consider the U.S. monthly auto sales series that was used for
+illustration in the first chapter of these notes, whose graph is reproduced
+here:<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:
+yes"><!--[if gte vml 1]><v:shape id="Picture_x0020_1" o:spid="_x0000_i1235"
+ type="#_x0000_t75" style='width:416.25pt;height:217.5pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image003.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="555" height="290" src="./What&#39;s a good value for R-squared__files/image030.png" v:shapes="Picture_x0020_1"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The units
+are $billions and the date range shown here is from January 1970 to February
+1996.<span style="mso-spacerun:yes">&nbsp; </span>Suppose that the objective of
+the analysis is to predict monthly auto sales from monthly total personal
+income.<span style="mso-spacerun:yes">&nbsp; </span>I am using these variables
+(and this antiquated date range) for two reasons:<span style="mso-spacerun:yes">&nbsp; </span>(i) this very (silly) example was used
+to illustrate the benefits of regression analysis in a textbook that I was
+using in that era, and (ii) I have seen many students undertake self-designed
+forecasting projects in which they have blindly fitted regression models using
+macroeconomic indicators such as personal income, gross domestic product,
+unemployment, and stock prices as predictors of nearly everything,<span style="mso-spacerun:yes">&nbsp; </span>the logic being that they reflect the
+general state of the economy and therefore have implications for every kind of
+business activity.<span style="mso-spacerun:yes">&nbsp; </span>Perhaps so, but
+the question is whether they do it in a <i style="mso-bidi-font-style:normal">linear,
+additive</i> fashion that stands out against the background noise in the
+variable that is to be predicted, and whether they adequately explain <i style="mso-bidi-font-style:normal">time patterns</i> in the data, and whether they
+yield <i style="mso-bidi-font-style:normal">useful</i> predictions and
+inferences in comparison to other ways in which you might choose to spend your
+time.<span style="mso-spacerun:yes">&nbsp; </span><a href="https://people.duke.edu/~rnau/rsquared.htm#top">Return to top
+of page.</a><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The
+corresponding graph of personal income (also in $billions) looks like this:<o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:
+yes"><!--[if gte vml 1]><v:shape id="Picture_x0020_3" o:spid="_x0000_i1234"
+ type="#_x0000_t75" style='width:416.25pt;height:217.5pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image005.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="555" height="290" src="./What&#39;s a good value for R-squared__files/image031.png" v:shapes="Picture_x0020_3"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">There is no
+seasonality in the income data.<span style="mso-spacerun:yes">&nbsp; </span>In
+fact, there is almost no pattern in it at all except for a trend that increased
+slightly in the earlier years.<span style="mso-spacerun:yes">&nbsp; </span>(This
+is not a good sign if we hope to get forecasts that have any specificity.)<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>By comparison, the seasonal
+pattern is the most striking feature in the auto sales, so the first thing that
+needs to be done is to <i style="mso-bidi-font-style:normal">seasonally adjust</i>
+the latter.<span style="mso-spacerun:yes">&nbsp; </span>Seasonally adjusted
+auto sales (independently obtained from the same government source) and
+personal income line up like this when plotted on the same graph:<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_4" o:spid="_x0000_i1233" type="#_x0000_t75" style='width:416.25pt;
+ height:217.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image007.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="555" height="290" src="./What&#39;s a good value for R-squared__files/image032.png" v:shapes="Picture_x0020_4"><!--[endif]--></span><span style="font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The strong and
+generally similar-looking trends suggest that we will get a very high value of
+R-squared if we regress sales on income, and indeed we do.<span style="mso-spacerun:yes">&nbsp; </span>Here is the summary table for that
+regression:<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape id="Picture_x0020_13"
+ o:spid="_x0000_i1232" type="#_x0000_t75" style='width:456pt;height:169.5pt;
+ visibility:visible;mso-wrap-style:square' o:bordertopcolor="black"
+ o:borderleftcolor="black" o:borderbottomcolor="black" o:borderrightcolor="black">
+ <v:imagedata src="rsquared_files/image009.png" o:title=""/>
+ <w:bordertop type="single" width="6"/>
+ <w:borderleft type="single" width="6"/>
+ <w:borderbottom type="single" width="6"/>
+ <w:borderright type="single" width="6"/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="610" height="228" src="./What&#39;s a good value for R-squared__files/image033.jpg" v:shapes="Picture_x0020_13"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Adjusted R-squared is
+almost 97%!<span style="mso-spacerun:yes">&nbsp; </span>However, a result like
+this is to be expected when regressing a strongly trended series on <i style="mso-bidi-font-style:normal">any other strongly trended series</i>, regardless
+of whether they are logically related.<span style="mso-spacerun:yes">&nbsp;
+</span>Here are the line fit plot and residuals-vs-time plot for the model:<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_7" o:spid="_x0000_i1231" type="#_x0000_t75" style='width:404.25pt;
+ height:204pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image011.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="539" height="272" src="./What&#39;s a good value for R-squared__files/image034.png" v:shapes="Picture_x0020_7"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_8" o:spid="_x0000_i1230" type="#_x0000_t75" style='width:402pt;
+ height:202.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image013.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="536" height="270" src="./What&#39;s a good value for R-squared__files/image035.png" v:shapes="Picture_x0020_8"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The residual-vs-time
+plot indicates that the model has some terrible problems. First, there is very
+strong <i style="mso-bidi-font-style:normal">positive autocorrelation in the
+errors,</i> i.e., a tendency to make the same error many times in a row.<span style="mso-spacerun:yes">&nbsp; </span>In fact, the lag-1 autocorrelation is
+0.77 for this model.<span style="mso-spacerun:yes">&nbsp; </span>It is clear
+why this happens:<span style="mso-spacerun:yes">&nbsp; </span>the two curves do
+not have exactly the same shape.<span style="mso-spacerun:yes">&nbsp;
+</span>The trend in the auto sales series tends to vary over time while the
+trend in income is much more consistent, so the two variales get out-of-synch
+with each other.<span style="mso-spacerun:yes">&nbsp; </span>This is typical of
+nonstationary time series data. Second, <i style="mso-bidi-font-style:normal">the
+model’s largest errors have occurred in the more recent years and
+especially in the last few months</i> (at the “business end” of the
+data, as I like to say), which means that we should expect the next few errors
+to be huge too, given the strong positive correlation between consecutive
+errors.<span style="mso-spacerun:yes">&nbsp; </span>And finally, <i style="mso-bidi-font-style:normal">the local variance of the errors increases
+steadily over time</i>. The reason for this is that random variations in auto
+sales (like most other measures of macroeconomic activity) tend to be
+consistent over time in <i style="mso-bidi-font-style:normal">percentage</i>
+terms rather than absolute terms, and the absolute level of the series has
+risen dramatically due to a combination of inflationary growth and real
+growth.<span style="mso-spacerun:yes">&nbsp; </span>As the level as grown, the
+variance of the random fluctuations has grown with it.<span style="mso-spacerun:yes">&nbsp; </span>Confidence intervals for forecasts in
+the near future will therefore be way too narrow, being based on average error
+sizes over the whole history of the series.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>So, despite the high value of
+R-squared, this is a <i style="mso-bidi-font-style:normal">very</i> bad
+model.<span style="mso-spacerun:yes">&nbsp; </span><a href="https://people.duke.edu/~rnau/rsquared.htm#top">Return to top
+of page.</a><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">One way to try to
+improve the model would be to <i style="mso-bidi-font-style:normal">deflate </i>both
+series first.<span style="mso-spacerun:yes">&nbsp; </span>This would at least
+eliminate the inflationary component of growth, which hopefully will make the
+variance of the errors more consistent over time.<span style="mso-spacerun:yes">&nbsp; </span>Here is a time series plot showing auto
+sales and personal income after they have been deflated by dividing them by the
+U.S. all-product consumer price index (CPI) at each point in time, with the CPI
+normalized to a value of 1.0 in February 1996 (the last row of the data).<span style="mso-spacerun:yes">&nbsp; </span>This does indeed flatten out the trend
+somewhat, and it also brings out some fine detail in the month-to-month
+variations that was not so apparent on the original plot.<span style="mso-spacerun:yes">&nbsp; </span>In particular, we begin to see some
+small bumps and wiggles in the income data that roughly line up with larger
+bumps and wiggles in the auto sales data.<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_9" o:spid="_x0000_i1229" type="#_x0000_t75" style='width:416.25pt;
+ height:217.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image015.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="555" height="290" src="./What&#39;s a good value for R-squared__files/image036.png" v:shapes="Picture_x0020_9"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">If we fit a simple
+regression model to these two variables, the following results are obtained:<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape id="Picture_x0020_14"
+ o:spid="_x0000_i1228" type="#_x0000_t75" style='width:529.5pt;height:169.5pt;
+ visibility:visible;mso-wrap-style:square' o:bordertopcolor="black"
+ o:borderleftcolor="black" o:borderbottomcolor="black" o:borderrightcolor="black"
+ filled="t" fillcolor="#5b9bd5 [3204]">
+ <v:imagedata src="rsquared_files/image017.png" o:title=""/>
+ <w:bordertop type="single" width="6"/>
+ <w:borderleft type="single" width="6"/>
+ <w:borderbottom type="single" width="6"/>
+ <w:borderright type="single" width="6"/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="708" height="228" src="./What&#39;s a good value for R-squared__files/image037.png" v:shapes="Picture_x0020_14"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_11" o:spid="_x0000_i1227" type="#_x0000_t75" style='width:420pt;
+ height:204pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image019.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="560" height="272" src="./What&#39;s a good value for R-squared__files/image038.png" v:shapes="Picture_x0020_11"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_15" o:spid="_x0000_i1226" type="#_x0000_t75" style='width:420.75pt;
+ height:204pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image021.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="561" height="272" src="./What&#39;s a good value for R-squared__files/image039.png" v:shapes="Picture_x0020_15"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Adjusted R-squared is
+only 0.788 for this model, which is worse, right?<span style="mso-spacerun:yes">&nbsp; </span>Well, no.<span style="mso-spacerun:yes">&nbsp; </span>We “explained” some of the variance
+in the original data by deflating it prior to fitting this model.<span style="mso-spacerun:yes">&nbsp; </span>Because the dependent variables are not
+the same, it is not appropriate to do a head-to-head comparison of R-squared.<span style="mso-spacerun:yes">&nbsp; </span>Arguably this is a better model, because
+it separates out the real growth in sales from the inflationary growth, and
+also because the errors have a more consistent variance over time.<span style="mso-spacerun:yes">&nbsp; </span>(The latter issue is not the bottom
+line, but it is a step in the direction of fixing the model assumptions.)<span style="mso-spacerun:yes">&nbsp; </span>Most interestingly, the deflated income
+data shows some fine detail that matches up with similar patterns in the sales
+data.<span style="mso-spacerun:yes">&nbsp; </span>However, the error variance
+is still a long way from being constant over the full two-and-a-half decades, and
+the problems of badly autocorrelated errors and a particularly bad fit to the
+most recent data have not been solved.<span style="mso-spacerun:yes">&nbsp;
+</span><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Another
+statistic that we might be tempted to compare between these two models is the
+standard error of the regression, which normally is the best bottom-line
+statistic to focus on.<span style="mso-spacerun:yes">&nbsp; </span>The second
+model’s standard error is much larger:<span style="mso-spacerun:yes">&nbsp; </span>3.253 vs. 2.218 for the first
+model.<span style="mso-spacerun:yes">&nbsp; </span>But wait… <i style="mso-bidi-font-style:normal">these two numbers cannot be directly
+compared, either, because they are not measured in the same units.</i><span style="mso-spacerun:yes">&nbsp; </span>The standard error of the first model is
+measured in units of <i style="mso-bidi-font-style:normal">current dollar</i>s,
+while the standard error of the second model is measured in units of <i style="mso-bidi-font-style:normal">1996 dollar</i>s.<span style="mso-spacerun:yes">&nbsp; </span>Those were decades of high inflation,
+and 1996 dollars were not worth nearly as much as dollars were worth in the
+earlier years.<span style="mso-spacerun:yes">&nbsp; </span>(In fact, a 1996
+dollar was only worth about one-quarter of a 1970 dollar.)<span style="mso-spacerun:yes">&nbsp; </span><a href="https://people.duke.edu/~rnau/rsquared.htm#top">Return to top of page.</a><o:p></o:p></span></p>
+
+<p><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The slope
+coefficients in the two models are also of interest.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>Because the units of the dependent
+and independent variables are the same in each model (current dollars in the
+first model, 1996 dollars in the second model), <i style="mso-bidi-font-style:
+normal">the slope coefficient can be interpreted as the predicted increase in
+dollars spent on autos per dollar of increase in income.</i><span style="mso-spacerun:yes">&nbsp; </span>The slope coefficients in the two models
+are nearly identical:<span style="mso-spacerun:yes">&nbsp; </span>0.086 and
+0.087, implying that on the margin, 8.6% to 8.7% of additional income is spent
+on autos.<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Let’s now try
+something totally different: fitting a simple time series model to the deflated
+data.<span style="mso-spacerun:yes">&nbsp; </span>In particular, let’s
+fit a <b style="mso-bidi-font-weight:normal">random-walk-with-drift model,</b>
+which is logically equivalent to fitting a constant-only model to the<i style="mso-bidi-font-style:normal"> first difference </i>(period to period
+change) in the original series.<span style="mso-spacerun:yes">&nbsp; </span>Let
+the differenced series be called AUTOSALES_SADJ_1996_DOLLARS_DIFF1 (which is
+the name that would be automatically assigned in RegressIt).<span style="mso-spacerun:yes">&nbsp; </span>Notice that we are now 3 levels deep in
+data transformations:<span style="mso-spacerun:yes">&nbsp; </span>seasonal
+adjustment, deflation, and differencing!<span style="mso-spacerun:yes">&nbsp;
+</span>This sort of situation is very common in time series analysis.<span style="mso-spacerun:yes">&nbsp; </span>Here are the results of fitting this
+model, in which AUTOSALES_SADJ_1996_DOLLARS_DIFF1 is the dependent variables
+and there are no independent variables, just the constant.<span style="mso-spacerun:yes">&nbsp; </span>This model merely predicts that each
+monthly difference will be the same, i.e., it predicts constant growth relative
+to the previous month’s value.<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="mso-no-proof:yes"><!--[if gte vml 1]><v:shape id="Picture_x0020_16"
+ o:spid="_x0000_i1225" type="#_x0000_t75" style='width:563.25pt;height:156pt;
+ visibility:visible;mso-wrap-style:square' o:bordertopcolor="black"
+ o:borderleftcolor="black" o:borderbottomcolor="black" o:borderrightcolor="black">
+ <v:imagedata src="rsquared_files/image023.png" o:title=""/>
+ <w:bordertop type="single" width="6"/>
+ <w:borderleft type="single" width="6"/>
+ <w:borderbottom type="single" width="6"/>
+ <w:borderright type="single" width="6"/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="753" height="210" src="./What&#39;s a good value for R-squared__files/image040.jpg" v:shapes="Picture_x0020_16"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Adjusted R-squared
+has dropped to zero!<span style="mso-spacerun:yes">&nbsp; </span>This is not a
+problem: a constant-only regression always has an R-squared of zero, but that
+doesn’t necessarily imply that it is not a good model for the particular
+dependent variable that has been used.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>We should look instead at the
+standard error of the regression.<span style="mso-spacerun:yes">&nbsp;
+</span>The units and sample of the dependent variable are the same for this
+model as for the previous one, so their regression standard errors can be
+legitimately compared.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span>(The
+sample size for the second model is actually 1 less than that of the first
+model due to the lack of period-zero value for computing a period-1 difference,
+but this is insignificant in such a large data set.)<span style="mso-spacerun:yes">&nbsp; </span>The regression standard error of this
+model is only 2.111, compared to 3.253 for the previous one, a reduction of
+roughly one-third, which is a very significant improvement.<span style="mso-spacerun:yes">&nbsp; </span>(The residual-vs-time plot for this
+model and the previous one have the same vertical scaling:<span style="mso-spacerun:yes">&nbsp; </span>look at them both and compare the size
+of the errors, particularly those that have occurred recently.)<span style="mso-spacerun:yes">&nbsp; </span>The reason why this model’s
+forecasts are so much more accurate is that it looks at<i style="mso-bidi-font-style:
+normal"> last month’s actual sales values</i>, whereas the previous model
+only looked at personal income data.<span style="mso-spacerun:yes">&nbsp;
+</span><i style="mso-bidi-font-style:normal">It is often the case that the best
+information about where a time series is going to go next is where it has been
+lately.</i><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">There is no line fit
+plot for this model, because there is no independent variable, but here is the
+residual-versus-time plot:<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_17" o:spid="_x0000_i1224" type="#_x0000_t75" style='width:446.25pt;
+ height:204pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image025.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="595" height="272" src="./What&#39;s a good value for R-squared__files/image041.png" v:shapes="Picture_x0020_17"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">These residuals look
+quite random to the naked eye, but they actually exhibit <i style="mso-bidi-font-style:
+normal">negative autocorrelation</i>, i.e., a tendency to alternate between
+overprediction and underprediction from one month to the next.<span style="mso-spacerun:yes">&nbsp; </span>(The lag-1 autocorrelation here is
+-0.356.)<span style="mso-spacerun:yes">&nbsp; </span>This often happens when
+differenced data is used, but overall the errors of this model are much closer
+to being independently and identically distributed than those of the previous
+two, so we can have a good deal more confidence in any confidence intervals for
+forecasts that may be computed from it.<span style="mso-spacerun:yes">&nbsp;
+</span>Of course, this model does not shed light on the relationship between
+personal income and auto sales.<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">So, what is the
+relationship between auto sales and personal income?<span style="mso-spacerun:yes">&nbsp; </span>That is a complex question and it will
+not be further pursued here except to note that there some other simple things
+we could do besides fitting a regression model.<span style="mso-spacerun:yes">&nbsp; </span>For example, we could compute the <i style="mso-bidi-font-style:normal">percentage of income spent on automobiles
+over time</i>, i.e., just divide the auto sales series by the personal income
+series and see what the pattern looks like.<span style="mso-spacerun:yes">&nbsp; </span>Here is the resulting picture:<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif;mso-no-proof:yes"><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_18" o:spid="_x0000_i1223" type="#_x0000_t75" style='width:416.25pt;
+ height:217.5pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="rsquared_files/image027.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img border="0" width="555" height="290" src="./What&#39;s a good value for R-squared__files/image042.png" v:shapes="Picture_x0020_18"><!--[endif]--></span><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">This chart nicely
+illustrates cyclical variations in the fraction of income spent on autos, which
+would be interesting to try to match up with other explanatory variables.<span style="mso-spacerun:yes">&nbsp; </span>The range is from about 7% to about 10%,
+which is generally consistent with the slope coefficients that were obtained in
+the two regression models (8.6% and 8.7%).<span style="mso-spacerun:yes">&nbsp;
+</span>However, this chart re-emphasizes what was seen in the residual-vs-time
+charts for the simple regression models:<span style="mso-spacerun:yes">&nbsp;
+</span>the fraction of income spent on autos is not consistent over time.<span style="mso-spacerun:yes">&nbsp; </span>In particular, notice that the fraction
+was increasing toward the end of the sample, exceeding 10% in the last month.<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">The bottom line here
+is that <b style="mso-bidi-font-weight:normal">R-squared was not of any use in
+guiding us through this particular analysis toward better and better models</b>.<span style="mso-spacerun:yes">&nbsp; </span>In fact, among the models considered
+above, the worst one had an R-squared of 97% and the best one had an R-squared
+of zero.<span style="mso-spacerun:yes">&nbsp; </span>At various stages of the
+analysis, data transformations were suggested:<span style="mso-spacerun:yes">&nbsp; </span>seasonal adjustment, deflating,
+differencing.<span style="mso-spacerun:yes">&nbsp; </span>(Logging was not
+tried here, but would have been an alternative to deflation.)<span style="mso-spacerun:yes">&nbsp; </span>And every time the dependent variable is
+transformed, it becomes impossible to make meaningful before-and-after
+comparisons of R-squared.<span style="mso-spacerun:yes">&nbsp;
+</span>Furthermore, regression was probably not even the best tool to use here
+in order to study the relation between the two variables.<span style="mso-spacerun:yes">&nbsp; </span>It is not a “universal
+wrench” that should be used on every problem.<span style="mso-spacerun:yes">&nbsp; </span><a href="https://people.duke.edu/~rnau/rsquared.htm#top">Return to top of page.</a><o:p></o:p></span></p>
+
+<div class="MsoNormal" align="center" style="text-align:center;tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">
+
+<hr size="2" width="100%" align="center">
+
+</span></div>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><a name="punchline"></a><b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">So,
+what IS a good value for R-squared?<span style="mso-spacerun:yes">&nbsp;
+</span></span></b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">It
+depends on the variable with respect to which you measure it, it depends on the
+units in which that variable is measured and whether any data transformations
+have been applied, and it depends on the decision-making context.<span style="mso-spacerun:yes">&nbsp; </span>If the dependent variable is a
+nonstationary (e.g., trending or random-walking) time series, an R-squared
+value very close to 1 (such as the 97% figure obtained in the first model
+above) may not be very impressive.<span style="mso-spacerun:yes">&nbsp;
+</span>In fact, if R-squared is very close to 1, and the data consists of time
+series, this is usually a bad sign rather than a good one:<span style="mso-spacerun:yes">&nbsp; </span>there will often be significant time
+patterns in the errors, as in the example above.<span style="mso-spacerun:yes">&nbsp; </span>On the other hand, if the dependent
+variable is a properly <i>stationarized</i> series (e.g., differences or percentage
+differences rather than levels), then an R-squared of 25% may be quite good. In
+fact, an R-squared of 10% or even less could have some information value when
+you are looking for a weak signal in the presence of a lot of noise in a
+setting where even a <i style="mso-bidi-font-style:normal">very </i>weak one
+would be of general interest. Sometimes there is a lot of value in explaining
+only a very small fraction of the variance, and sometimes there isn't. Data
+transformations such as logging or deflating also change the interpretation and
+standards for R-squared, inasmuch as they change the variance you start out
+with.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">However, <b style="mso-bidi-font-weight:normal">be very careful when evaluating a model
+with a low value of R-squared</b>.<span style="mso-spacerun:yes">&nbsp;
+</span>In such a situation:<span style="mso-spacerun:yes">&nbsp; </span>(i) it
+is better if the set of variables in the model is determined a priori (as in
+the case of a designed experiment or a test of a well-posed hypothesis) rather
+by searching among a lineup of randomly selected suspects; (ii) the data should
+be clean (not contaminated by outliers, inconsistent measurements, or
+ambiguities in what is being measured, as in the case of poorly worded surveys
+given to unmotivated subjects); (iii) the coefficient estimates should be
+individually or at least jointly significantly different from zero (as measured
+by their P-values and/or the P-value of the F statistic), which may require a
+large sample to achieve in the presence of low correlations; and (iv) it is a
+good idea to do <b style="mso-bidi-font-weight:normal">cross-validation</b>
+(out-of-sample testing) to see if the model performs about equally well on data
+that was not used to identify or estimate it, particularly when the structure
+of the model was not known a priori.<span style="mso-spacerun:yes">&nbsp;
+</span>It is easy to find spurious (accidental) correlations if you go on a
+fishing expedition in a large pool of candidate independent variables while
+using low standards for acceptance.<span style="mso-spacerun:yes">&nbsp;
+</span>I have often had students use this approach to try to predict stock
+returns using regression models--which I do not recommend--and it is not
+uncommon for them to find models that yield R-squared values in the range of 5%
+to 10%, but they virtually never survive out-of-sample testing.<span style="mso-spacerun:yes">&nbsp; </span>(You should buy index funds
+instead.)<span style="mso-spacerun:yes">&nbsp; </span><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">There are a variety
+of ways in which to cross-validate a model.<span style="mso-spacerun:yes">&nbsp; </span>A discussion of some of them can be
+found <a href="http://robjhyndman.com/hyndsight/crossvalidation/">here</a>.<span style="mso-spacerun:yes">&nbsp; </span>If your software doesn’t offer
+such options, there are simple tests you can conduct on your own.<span style="mso-spacerun:yes">&nbsp; </span>One is to split the data set in half and
+fit the model separately to both halves to see if you get similar results in
+terms of coefficient estimates and adjusted R-squared. <o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">When working with <b style="mso-bidi-font-weight:normal">time series data</b>, if you compare the
+standard deviation of the errors of a regression model which uses exogenous
+predictors against that of a simple time series model (say, an autoregressive
+or exponential smoothing or random walk model), you may be disappointed by what
+you find.<span style="mso-spacerun:yes">&nbsp; </span>If the variable to be
+predicted is a time series, it will often be the case that most of the
+predictive power is derived from its own history via lags, differences, and/or
+seasonal adjustment. This is the reason why we spent some time studying the
+properties of time series models before tackling regression models.<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><b style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif">A rule of thumb for small values of R-squared</span></b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">:<span style="mso-spacerun:yes">&nbsp; </span>If R-squared is small (say 25% or less),
+then the fraction by which the standard deviation of the errors is less than
+the standard deviation of the dependent variable is <i style="mso-bidi-font-style:
+normal">approximately</i> one-half of R-squared, as shown in the <a href="https://people.duke.edu/~rnau/rsquared.htm#table">table</a> above.<span style="mso-spacerun:yes">&nbsp; </span>So,
+for example, if your model has an R-squared of 10%, then its errors are only
+about 5% smaller on average than those of a constant-only model, which merely
+predicts that everything will equal the mean. Is that enough to be useful, or
+not?<span style="mso-spacerun:yes">&nbsp; </span>Another handy reference point:<span style="mso-spacerun:yes">&nbsp; </span>if the model has an R-squared of 75%,
+its errors are 50% smaller on average than those of a constant-only model.
+(This is not an approximation:<span style="mso-spacerun:yes">&nbsp; </span>it
+follows directly from the fact that reducing the error standard deviation to
+½ of its former value is equivalent to reducing its variance to ¼
+of its former value.)<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">In general you should
+<b style="mso-bidi-font-weight:normal">look at adjusted R-squared rather than
+R-squared</b>.<span style="mso-spacerun:yes">&nbsp; </span>Adjusted R-squared
+is an <i style="mso-bidi-font-style:normal">unbiased</i> estimate of the
+fraction of variance explained, taking into account the sample size and number
+of variables.<span style="mso-spacerun:yes">&nbsp; </span>Usually adjusted
+R-squared is only slightly smaller than R-squared, but it is possible for
+adjusted R-squared to be zero or negative if a model with insufficiently
+informative variables is fitted to too small a sample of data.</span><span style="font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">What measure of your
+model's explanatory power should you report to your boss or client or
+instructor? </span></b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">If
+you used regression analysis, then to be perfectly candid you should of course
+include the adjusted R-squared for the regression model that was actually
+fitted (whether to the original data or some transformation thereof), along
+with other details of the output, somewhere in your report.<span style="mso-spacerun:yes">&nbsp; </span>You should more strongly emphasize the <b style="mso-bidi-font-weight:normal">standard error of the regression</b>,
+though, because that measures the predictive accuracy of the model in real
+terms, and it scales the width of all confidence intervals calculated from the
+model.<span style="mso-spacerun:yes">&nbsp; </span>You may also want to report
+other practical measures of error size such as the <b style="mso-bidi-font-weight:
+normal">mean absolute error</b> or <b style="mso-bidi-font-weight:normal">mean
+absolute percentage error</b> and/or <b>mean absolute scaled error</b>.<span style="mso-spacerun:yes">&nbsp; </span></span><span style="font-family:&quot;Verdana&quot;,sans-serif"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">What should never
+happen to you: </span></b><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif">Don't
+ever let yourself fall into the trap of fitting (and then promoting!) a
+regression model that has a respectable-looking R-squared but is actually very
+much inferior to a simple time series model. If the dependent variable in your
+model is a nonstationary time series, be sure that you do a comparison of error
+measures against an appropriate time series model.<span style="mso-spacerun:yes">&nbsp; </span>Remember that what R-squared measures is
+the proportional reduction in error variance that the regression model achieves<i style="mso-bidi-font-style:normal"> in comparison to a constant-only model
+(i.e., mean model) fitted to the same dependent variable</i>, but the
+constant-only model may not be the most appropriate reference point, and the
+dependent variable you end up using may not be the one you started with if data
+transformations turn out to be important.</span><span style="font-size:10.0pt"><o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><b style="mso-bidi-font-weight:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif">And finally: <i style="mso-bidi-font-style:normal"><span style="mso-spacerun:yes">&nbsp;</span>R-squared is not the bottom line</i></span></b><i style="mso-bidi-font-style:normal"><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif">. </span></i><span style="font-size:10.0pt;font-family:
+&quot;Verdana&quot;,sans-serif"><span style="mso-spacerun:yes">&nbsp;</span>You
+don’t get paid in proportion to R-squared.<span style="mso-spacerun:yes">&nbsp; </span>The real bottom line in your analysis is
+measured by consequences of decisions that you and others will make on the
+basis of it.<span style="mso-spacerun:yes">&nbsp; </span>In general, the
+important criteria for a good regression model are (a) to make the smallest
+possible errors, <i style="mso-bidi-font-style:normal">in practical terms</i>,
+when predicting what will happen <i style="mso-bidi-font-style:normal">in the
+future</i>, and (b) to derive useful inferences from the structure of the model
+and the estimated values of its parameters.<span style="mso-spacerun:yes">&nbsp; </span><a href="https://people.duke.edu/~rnau/rsquared.htm#top">Return to top of page.</a>
+<o:p></o:p></span></p>
+
+<p style="tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt"><span style="font-size:10.0pt;font-family:&quot;Verdana&quot;,sans-serif"><a href="http://people.duke.edu/~rnau/compare.htm">Go on to next topic:<span style="mso-spacerun:yes">&nbsp; </span>How to compare models</a><o:p></o:p></span></p>
+
+<div class="MsoNormal" align="center" style="text-align:center"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;">
+
+<hr size="2" width="100%" align="center">
+
+</span></div>
+
+<div><!-- Start of StatCounter Code for Default Guide -->
+
+<p class="MsoNormal"><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><script type="text/javascript">
+var sc_project=9813276; 
+var sc_invisible=1; 
+var sc_security="05193237"; 
+var sc_https=1; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script><script type="text/javascript" src="./What&#39;s a good value for R-squared__files/counter.js.download"></script></span><a href="http://statcounter.com/" title="&quot;web analytics&quot; t "><span style="mso-fareast-font-family:&quot;Times New Roman&quot;;mso-no-proof:yes;text-decoration:
+none;text-underline:none"><img border="0" width="1" height="1" id="_x0000_i1222" src="./What&#39;s a good value for R-squared__files/saved_resource" alt="web analytics"></span></a><span style="mso-fareast-font-family:&quot;Times New Roman&quot;"><o:p></o:p></span></p>
+
+</div>
+
+</div>
+
+<!-- End of StatCounter Code for Default Guide -->
+
+
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>

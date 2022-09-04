@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0046)https://www.stat.berkeley.edu/~s133/dates.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><meta name="GENERATOR" content="TtH 3.67">
+ <style type="text/css"> div.p { margin-top: 7pt;}</style>
+ <style type="text/css"><!--
+ td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+ span.overacc2 {position: relative;  left: .8em; top: -1.2ex;}
+ span.overacc1 {position: relative;  left: .6em; top: -1.2ex;} --></style>
+
+<title> Dates and Times in R</title>
+ 
+</head><body><h1 align="center">Dates and Times in R </h1>
+
+R provides several options for dealing with date and date/time data.  
+The builtin <tt>as.Date</tt> function handles dates (without times);
+the contributed library <tt>chron</tt> handles dates and
+times, but does not control for time zones; and the <tt>POSIXct</tt> and 
+<tt>POSIXlt</tt> classes allow for dates and times with control for time zones.
+The general rule for date/time data in R is to use the simplest technique possible.
+Thus, for date only data, <tt>as.Date</tt> will usually be the best choice.  If you
+need to handle dates and times, without timezone information, the <tt>chron</tt>
+library is a good choice; the POSIX classes are especially useful when timezone
+manipulation is important.   Also, don't overlook the various "<tt>as.</tt>"
+functions (see Section&nbsp;) for converting among the different 
+date types when necessary.
+
+<div class="p"><!----></div>
+Except for the <tt>POSIXlt</tt> class, dates are stored internally as the number
+of days or seconds from some reference date.  Thus dates in R will generally 
+have a numeric mode, and the <tt>class</tt> function can be used to find the 
+way they are actually being stored.  The <tt>POSIXlt</tt> class stores date/time
+values as a list of components (<tt>hour</tt>, <tt>min</tt>, <tt>sec</tt>, 
+<tt>mon</tt>, etc.) making it easy to extract these parts.  
+
+<div class="p"><!----></div>
+To get the current date, the Sys.Date function 
+will return a <tt>Date</tt> object which can be converted to a different  class
+if necessary.
+
+<div class="p"><!----></div>
+The following subsections will describe the different types of date values in more
+detail.
+
+<div class="p"><!----></div>
+The <tt>as.Date</tt> function allows a variety of input formats through the 
+<tt>format=</tt> argument.  The default format
+is a four digit year, followed by a month, then a day, separated by either 
+dashes or slashes.  The following example shows some examples of dates which 
+<tt>as.Date</tt> will accept by default:
+
+<pre>&gt;&nbsp;as.Date('1915-6-16')
+[1]&nbsp;"1915-06-16"
+&gt;&nbsp;as.Date('1990/02/17')
+[1]&nbsp;"1990-02-17"
+
+</pre>
+
+<div class="p"><!----></div>
+<a name="tth_tAb1">
+</a> 
+<center>
+<table border="1">
+<tbody><tr><td>Code</td><td>Value</td></tr>
+<tr><td><tt>%d</tt></td><td>Day of the month (decimal number)</td></tr>
+<tr><td><tt>%m</tt></td><td>Month (decimal number)</td></tr>
+<tr><td><tt>%b</tt></td><td>Month (abbreviated)</td></tr>
+<tr><td><tt>%B</tt></td><td>Month (full name)</td></tr>
+<tr><td><tt>%y</tt></td><td>Year (2 digit)</td></tr>
+<tr><td><tt>%Y</tt></td><td>Year (4 digit)</td></tr></tbody></table>
+
+</center>
+
+
+
+<div class="p"><!----></div>
+  If your input dates are not in the standard format, a format string can
+be composed using the elements shown in Table&nbsp;.   The following 
+examples show some ways that this can be used:
+
+<pre>&gt;&nbsp;as.Date('1/15/2001',format='%m/%d/%Y')
+[1]&nbsp;"2001-01-15"
+&gt;&nbsp;as.Date('April&nbsp;26,&nbsp;2001',format='%B&nbsp;%d,&nbsp;%Y')
+[1]&nbsp;"2001-04-26"
+&gt;&nbsp;as.Date('22JUN01',format='%d%b%y')&nbsp;&nbsp;&nbsp;#&nbsp;%y&nbsp;is&nbsp;system-specific;&nbsp;use&nbsp;with&nbsp;caution
+[1]&nbsp;"2001-06-22"
+
+</pre>
+
+<div class="p"><!----></div>
+Internally, <tt>Date</tt> objects are stored as the number of days since 
+January 1, 1970, using negative numbers for earlier dates.  The <tt>as.numeric</tt>
+function can be used to convert a <tt>Date</tt> object to its internal form.
+
+<div class="p"><!----></div>
+To extract the components of the dates, the <tt>weekdays</tt>,
+<tt>months</tt>, <tt>days</tt> or <tt>quarters</tt>
+functions can be used.  For example, to 
+find the day of the week on which some famous statisticians were born, we 
+can look at the result of the 
+<tt>weekdays</tt> function:
+
+<pre>&gt;&nbsp;bdays&nbsp;=&nbsp;c(tukey=as.Date('1915-06-16'),fisher=as.Date('1890-02-17'),
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cramer=as.Date('1893-09-25'),&nbsp;kendall=as.Date('1907-09-06'))
+&gt;&nbsp;weekdays(bdays)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tukey&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fisher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cramer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kendall
+"Wednesday"&nbsp;&nbsp;&nbsp;&nbsp;"Monday"&nbsp;&nbsp;&nbsp;&nbsp;"Monday"&nbsp;&nbsp;&nbsp;&nbsp;"Friday"
+
+</pre>
+
+<div class="p"><!----></div>
+For an alternative way of extracting pieces of a day, and for information
+on possible output formats for <tt>Date</tt> objects, see Section&nbsp;.
+
+<div class="p"><!----></div>
+The <tt>chron</tt> function converts dates and times to <tt>chron</tt> objects.
+The dates and times are provided to the <tt>chron</tt> function as separate values,
+so some preprocessing may be necessary to prepare input date/times for the 
+<tt>chron</tt> function. 
+When using character values, the default format for dates is the decimal month value
+followed by the decimal day value followed by the year, using the slash as a 
+separator.   Alternative formats can be provided by using the codes shown in 
+Table&nbsp;
+
+<div class="p"><!----></div>
+<a name="tth_tAb1">
+</a> 
+<center>
+<table border="1">
+<tbody><tr><td colspan="2" align="center">Format codes for dates</td></tr>
+<tr><td>Code</td><td>Value</td></tr>
+<tr><td><tt>m</tt></td><td>Month (decimal number)</td></tr>
+<tr><td><tt>d</tt></td><td>Day of the month (decimal number)</td></tr>
+<tr><td><tt>y</tt></td><td>Year (4 digit)</td></tr>
+<tr><td><tt>mon</tt></td><td>Month (abbreviated)</td></tr>
+<tr><td><tt>month</tt></td><td>Month (full name)</td></tr>
+<tr><td colspan="2" align="center">Format codes for times</td></tr>
+<tr><td>Code</td><td>Value</td></tr>
+<tr><td><tt>h</tt></td><td>Hour</td></tr>
+<tr><td><tt>m</tt></td><td>Minute</td></tr>
+<tr><td><tt>s</tt></td><td>Second</td></tr></tbody></table>
+
+</center>
+
+
+
+<div class="p"><!----></div>
+Alternatively, dates can be specified by a numeric
+value, representing the number of days since January 1, 1970.  To input dates stored
+as the day of the year, the <tt>origin=</tt> argument can be used to interpret numeric dates relative to 
+a different date.   
+
+<div class="p"><!----></div>
+The default format for times consists of the hour, minutes and seconds, separated 
+by colons.  Alternative formats can use the codes in Table&nbsp;.
+
+<div class="p"><!----></div>
+Often the first task when using the <tt>chron</tt> library is to break apart
+the date and times if they are stored together.  In the following example, 
+the <tt>strsplit</tt> function is used to break apart the string.  
+
+<pre>&gt;&nbsp;dtimes&nbsp;=&nbsp;c("2002-06-09&nbsp;12:45:40","2003-01-29&nbsp;09:30:40",
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"2002-09-04&nbsp;16:45:40","2002-11-13&nbsp;20:00:40",
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"2002-07-07&nbsp;17:30:40")
+&gt;&nbsp;dtparts&nbsp;=&nbsp;t(as.data.frame(strsplit(dtimes,'&nbsp;')))
+&gt;&nbsp;row.names(dtparts)&nbsp;=&nbsp;NULL
+&gt;&nbsp;thetimes&nbsp;=&nbsp;chron(dates=dtparts[,1],times=dtparts[,2],
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;format=c('y-m-d','h:m:s'))
+&gt;&nbsp;thetimes
+[1]&nbsp;(02-06-09&nbsp;12:45:40)&nbsp;(03-01-29&nbsp;09:30:40)&nbsp;(02-09-04&nbsp;16:45:40)
+[4]&nbsp;(02-11-13&nbsp;20:00:40)&nbsp;(02-07-07&nbsp;17:30:40)
+
+</pre>
+Chron values are stored internally as the fractional number of days from
+January 1, 1970.  The <tt>as.numeric</tt>
+function can be used to access the internal values.
+
+<div class="p"><!----></div>
+For information on formatting <tt>chron</tt> objects for output, see 
+Section&nbsp;
+
+<div class="p"><!----></div>
+POSIX represents a portable operating system interface, primarily for UNIX
+systems, but available on other operating systems as well.  Dates stored in
+the POSIX format are date/time values (like dates with the <tt>chron</tt> library),
+but also allow modification of time zones.  Unlike the <tt>chron</tt> library,
+which stores times as fractions of days, the POSIX date classes store times to
+the nearest
+second, so they provide a more
+accurate representation of times.
+
+<div class="p"><!----></div>
+There are two POSIX date/time classes, which differ in the way that the values
+are stored internally. The <tt>POSIXct</tt> class stores date/time values 
+as the
+number of seconds since January 1, 1970, while the <tt>POSIXlt</tt> class
+stores them as a list with elements for second, minute, hour, day, month, and year,
+among others.  Unless you need the list nature of the <tt>POSIXlt</tt> class,
+the <tt>POSIXct</tt> class is the usual choice for storing dates in R.
+
+<div class="p"><!----></div>
+The default input format for POSIX dates consists of the year, followed by the 
+month and day, separated by slashes or dashes; for date/time values, the date
+may be followed by white space and a time in the form hour:minutes:seconds or 
+hour:minutes; thus,
+the following are examples of valid POSIX date or date/time inputs:
+
+<pre>1915/6/16
+2005-06-24&nbsp;11:25
+1990/2/17&nbsp;12:20:05
+
+</pre>
+
+If the input times correspond to one of these formats, as.POSIXct can
+be called directly:
+
+<pre>&gt;&nbsp;dts&nbsp;=&nbsp;c("2005-10-21&nbsp;18:47:22","2005-12-24&nbsp;16:39:58",
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"2005-10-28&nbsp;07:30:05&nbsp;PDT")
+&gt;&nbsp;as.POSIXlt(dts)
+[1]&nbsp;"2005-10-21&nbsp;18:47:22"&nbsp;"2005-12-24&nbsp;16:39:58"&nbsp;
+[3]&nbsp;"2005-10-28&nbsp;07:30:05"
+
+</pre>
+If your input date/times are stored as  the number of seconds from January 1, 1970, 
+you can create <tt>POSIX</tt> date values by assigning the appropriate class
+directly to those values.   Since most date manipulation functions refer to the 
+<tt>POSIXt</tt> psuedo-class, be sure to include it as the first member of the 
+class attribute.  
+
+<pre>&gt;&nbsp;dts&nbsp;=&nbsp;c(1127056501,1104295502,1129233601,1113547501,
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1119826801,1132519502,1125298801,1113289201)
+&gt;&nbsp;mydates&nbsp;=&nbsp;dts
+&gt;&nbsp;class(mydates)&nbsp;=&nbsp;c('POSIXt','POSIXct')
+&gt;&nbsp;mydates
+[1]&nbsp;"2005-09-18&nbsp;08:15:01&nbsp;PDT"&nbsp;"2004-12-28&nbsp;20:45:02&nbsp;PST"
+[3]&nbsp;"2005-10-13&nbsp;13:00:01&nbsp;PDT"&nbsp;"2005-04-14&nbsp;23:45:01&nbsp;PDT"
+[5]&nbsp;"2005-06-26&nbsp;16:00:01&nbsp;PDT"&nbsp;"2005-11-20&nbsp;12:45:02&nbsp;PST"
+[7]&nbsp;"2005-08-29&nbsp;00:00:01&nbsp;PDT"&nbsp;"2005-04-12&nbsp;00:00:01&nbsp;PDT"
+
+</pre>
+
+Conversions like this can be done more succinctly using the 
+<tt>structure</tt> function:
+
+<pre>&gt;&nbsp;mydates&nbsp;=&nbsp;structure(dts,class=c('POSIXt','POSIXct'))
+
+</pre>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a name="tth_tAb1">
+</a> 
+<center>
+<table border="1">
+<tbody><tr><td>Code</td><td>Meaning</td><td>Code</td><td>Meaning</td></tr>
+<tr><td><tt>%a</tt></td><td>Abbreviated weekday</td><td><tt>%A</tt></td><td>Full weekday</td></tr>
+<tr><td><tt>%b</tt></td><td>Abbreviated month</td><td><tt>%B</tt></td><td>Full month</td></tr>
+<tr><td><tt>%c</tt></td><td>Locale-specific date and time</td><td><tt>%d</tt></td><td>Decimal date</td></tr>
+<tr><td><tt>%H</tt></td><td>Decimal hours (24 hour)</td><td><tt>%I</tt></td><td>Decimal hours (12 hour)</td></tr>
+<tr><td><tt>%j</tt></td><td>Decimal day of the year</td><td><tt>%m</tt></td><td>Decimal month</td></tr>
+<tr><td><tt>%M</tt></td><td>Decimal minute</td><td><tt>%p</tt></td><td>Locale-specific AM/PM</td></tr>
+<tr><td><tt>%S</tt></td><td>Decimal second</td><td><tt>%U</tt></td><td>Decimal week of the year (starting on Sunday)</td></tr>
+<tr><td><tt>%w</tt></td><td>Decimal Weekday (0=Sunday)</td><td><tt>%W</tt></td><td>Decimal week of the year (starting on Monday)</td></tr>
+<tr><td><tt>%x</tt></td><td>Locale-specific Date</td><td><tt>%X</tt></td><td>Locale-specific Time</td></tr>
+<tr><td><tt>%y</tt></td><td>2-digit year</td><td><tt>%Y</tt></td><td>4-digit year</td></tr>
+<tr><td><tt>%z</tt></td><td>Offset from GMT</td><td><tt>%Z</tt></td><td>Time zone (character)</td></tr></tbody></table>
+
+</center>
+
+
+
+<div class="p"><!----></div>
+The POSIX date/time classes take advantage of the POSIX date/time implementation
+of your operating system, allowing dates and times in R to be manipulated in the 
+same way they would in, for example a C program.   The two most important functions
+in this regard are <tt>strptime</tt>, for inputting dates, and 
+<tt>strftime</tt>, for formatting dates for output.  Both of these 
+functions use a variety of formatting codes, some of which are listed in 
+Table&nbsp;, to specify the way dates are read or printed.  For example,
+dates in many logfiles are printed in a format like 
+"<tt>16/Oct/2005:07:51:00</tt>".
+To create a <tt>POSIXct</tt> date from a date in this format, the following 
+call to <tt>strptime</tt> could be used:
+
+<pre>&gt;&nbsp;mydate&nbsp;=&nbsp;strptime('16/Oct/2005:07:51:00',format='%d/%b/%Y:%H:%M:%S')
+[1]&nbsp;"2005-10-16&nbsp;07:51:00"
+
+</pre>
+ Note that non-format characters (like the slashes) are interpreted
+literally.
+
+<div class="p"><!----></div>
+When using <tt>strptime</tt>, an optional time zone can be specified
+with the <tt>tz=</tt> option.
+
+<div class="p"><!----></div>
+Another way to create POSIX dates is to pass the individual components of the 
+time to the ISOdate function.  Thus, the first date/time value in 
+the previous example could also be created with a call to <tt>ISOdate</tt>;
+
+<pre>&gt;&nbsp;ISOdate(2005,10,21,18,47,22,tz="PDT")
+[1]&nbsp;"2005-10-21&nbsp;18:47:22&nbsp;PDT"
+
+</pre>
+
+<div class="p"><!----></div>
+For formatting dates for output, the <tt>format</tt> function will recognize
+the type of your input date, and perform any necessary conversions before 
+calling 
+<tt>strftime</tt>, so <tt>strftime</tt> rarely needs to be called directly. 
+For example, to print a date/time value in an extended 
+format, we could use:
+
+<pre>&gt;&nbsp;thedate&nbsp;=&nbsp;ISOdate(2005,10,21,18,47,22,tz="PDT")
+&gt;&nbsp;format(thedate,'%A,&nbsp;%B&nbsp;%d,&nbsp;%Y&nbsp;%H:%M:%S')
+[1]&nbsp;"Friday,&nbsp;October&nbsp;21,&nbsp;2005&nbsp;18:47:22"
+
+</pre>
+ When using POSIX dates, the optional <tt>usetz=TRUE</tt> argument
+to the <tt>format</tt> function
+can be specified to indicate that the time zone should be displayed.
+
+<div class="p"><!----></div>
+ Additionally, <tt>as.POSIXlt</tt> and <tt>as.POSIXct</tt> can also
+accept <tt>Date</tt> or <tt>chron</tt> objects, so they can be input as 
+described in the previous sections and converted as needed. Conversion between
+the two POSIX forms is also possible.
+
+<div class="p"><!----></div>
+The individual components of a POSIX date/time object can be extracted 
+by first converting to <tt>POSIXlt</tt> if necessary, and then 
+accessing the components directly:
+
+<pre>&gt;&nbsp;mydate&nbsp;=&nbsp;as.POSIXlt('2005-4-19&nbsp;7:01:00')
+&gt;&nbsp;names(mydate)
+[1]&nbsp;"sec"&nbsp;&nbsp;&nbsp;"min"&nbsp;&nbsp;&nbsp;"hour"&nbsp;&nbsp;"mday"&nbsp;&nbsp;"mon"&nbsp;&nbsp;&nbsp;"year"&nbsp;&nbsp;
+[7]&nbsp;"wday"&nbsp;&nbsp;"yday"&nbsp;&nbsp;"isdst"
+&gt;&nbsp;mydate$mday
+[1]&nbsp;19
+
+</pre>
+
+<div class="p"><!----></div>
+Many of the statistical summary functions, like <tt>mean</tt>, <tt>min</tt>,
+<tt>max</tt>, etc are able to transparently handle date objects.  For example,
+consider the release
+dates of various versions or R from 1.0 to 2.0:
+
+<pre>&gt;&nbsp;rdates&nbsp;=&nbsp;scan(what="")
+1:&nbsp;1.0&nbsp;29Feb2000
+3:&nbsp;1.1&nbsp;15Jun2000
+5:&nbsp;1.2&nbsp;15Dec2000
+7:&nbsp;1.3&nbsp;22Jun2001
+9:&nbsp;1.4&nbsp;19Dec2001
+11:&nbsp;1.5&nbsp;29Apr2002
+13:&nbsp;1.6&nbsp;1Oct2002
+15:&nbsp;1.7&nbsp;16Apr2003
+17:&nbsp;1.8&nbsp;8Oct2003
+19:&nbsp;1.9&nbsp;12Apr2004
+21:&nbsp;2.0&nbsp;4Oct2004
+23:
+Read&nbsp;22&nbsp;items
+&gt;&nbsp;rdates&nbsp;=&nbsp;as.data.frame(matrix(rdates,ncol=2,byrow=TRUE))
+&gt;&nbsp;rdates[,2]&nbsp;=&nbsp;as.Date(rdates[,2],format='%d%b%Y')
+&gt;&nbsp;names(rdates)&nbsp;=&nbsp;c("Release","Date")
+&gt;&nbsp;rdates
+&nbsp;&nbsp;&nbsp;Release&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0&nbsp;2000-02-29
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1&nbsp;2000-06-15
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2&nbsp;2000-12-15
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3&nbsp;2001-06-22
+5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.4&nbsp;2001-12-19
+6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5&nbsp;2002-04-29
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.6&nbsp;2002-10-01
+8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.7&nbsp;2003-04-16
+9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.8&nbsp;2003-10-08
+10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.9&nbsp;2004-04-12
+11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.0&nbsp;2004-10-04
+
+</pre>
+
+<div class="p"><!----></div>
+Once the dates are properly read into R, a variety of calculations can
+be performed:
+
+<pre>&gt;&nbsp;mean(rdates$Date)
+[1]&nbsp;"2002-05-19"
+&gt;&nbsp;range(rdates$Date)
+[1]&nbsp;"2000-02-29"&nbsp;"2004-10-04"
+&gt;&nbsp;rdates$Date[11]&nbsp;-&nbsp;rdates$Date[1]
+Time&nbsp;difference&nbsp;of&nbsp;1679&nbsp;days
+
+</pre>
+
+<div class="p"><!----></div>
+If two times (using any of the date or date/time classes) are subtracted,
+R will return the results in the form of a time difference, which represents
+a <tt>difftime</tt> object.  For example, New York City experienced
+a major blackout on July 13, 1997, and another on August 14, 2003.  To calculate
+the time interval between the two blackouts, we can simply subtract the two
+dates, using any of the classes that have been introduced:
+
+<pre>&gt;&nbsp;b1&nbsp;=&nbsp;ISOdate(1977,7,13)
+&gt;&nbsp;b2&nbsp;=&nbsp;ISOdate(2003,8,14)
+&gt;&nbsp;b2&nbsp;-&nbsp;b1
+Time&nbsp;difference&nbsp;of&nbsp;9528&nbsp;days
+
+</pre>
+ If an alternative unit of time was desired, the <tt>difftime</tt>
+function could be called, using the optional <tt>units=</tt> argument can be used
+with any of the following values: "<tt>auto</tt>", "<tt>secs</tt>", 
+"<tt>mins</tt>", "<tt>hours</tt>", "<tt>days</tt>", or "<tt>weeks</tt>".
+So to see the difference between blackouts in terms of weeks, we can use:
+
+<pre>&gt;&nbsp;difftime(b2,b1,units='weeks')
+Time&nbsp;difference&nbsp;of&nbsp;1361.143&nbsp;weeks
+
+</pre>
+ Although <tt>difftime</tt> values are displayed with their units, they
+can be manipulated like ordinary numeric variables; arithmetic performed with these
+values will retain the original units.
+
+<div class="p"><!----></div>
+The <tt>by=</tt> argument to the <tt>seq</tt> function can be specified either as
+a <tt>difftime</tt> value, or in any units
+of time that the <tt>difftime</tt> function accepts, making it very easy to 
+generate sequences of dates.  For example, to 
+generate a vector of ten dates, starting on July 4, 1976 with an interval of one
+day between them, we could use:
+
+<pre>&gt;&nbsp;seq(as.Date('1976-7-4'),by='days',length=10)
+&nbsp;[1]&nbsp;"1976-07-04"&nbsp;"1976-07-05"&nbsp;"1976-07-06"&nbsp;"1976-07-07"&nbsp;"1976-07-08"
+&nbsp;[6]&nbsp;"1976-07-09"&nbsp;"1976-07-10"&nbsp;"1976-07-11"&nbsp;"1976-07-12"&nbsp;"1976-07-13"
+
+</pre>
+ All the date classes except for <tt>chron</tt> will accept an integer
+before the interval provided as a <tt>by=</tt> argument.  We could create a 
+sequence of dates separated by two weeks from June 1, 2000 to August 1, 2000 as
+follows:
+
+<pre>&gt;&nbsp;seq(as.Date('2000-6-1'),to=as.Date('2000-8-1'),by='2&nbsp;weeks')
+[1]&nbsp;"2000-06-01"&nbsp;"2000-06-15"&nbsp;"2000-06-29"&nbsp;"2000-07-13"&nbsp;"2000-07-27"
+
+</pre>
+ The <tt>c</tt>ut function also understands units of 
+<tt>days</tt>, <tt>weeks</tt>, <tt>months</tt>, and <tt>years</tt>, 
+making it very easy to create factors grouped by these units.  See 
+Section&nbsp; for details.
+
+<div class="p"><!----></div>
+Format codes can also be used to extract parts of dates, similar to
+the <tt>weekdays</tt> and other functions described in Section&nbsp;.
+We could look at the distribution of weekdays for the R release dates as 
+follows:
+
+<pre>&gt;&nbsp;table(format(rdates$Date,'%A'))
+
+&nbsp;&nbsp;&nbsp;Friday&nbsp;&nbsp;&nbsp;&nbsp;Monday&nbsp;&nbsp;Thursday&nbsp;&nbsp;&nbsp;Tuesday&nbsp;Wednesday
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3
+
+</pre>
+ This same technique can be used to convert dates to factors.  For 
+example, to create a factor based on the release dates broken down by years
+we could use:
+
+<pre>&gt;&nbsp;fdate&nbsp;=&nbsp;factor(format(rdates$Date,'%Y'))
+&gt;&nbsp;fdate
+&nbsp;[1]&nbsp;2000&nbsp;2000&nbsp;2000&nbsp;2001&nbsp;2001&nbsp;2002&nbsp;2002&nbsp;2003&nbsp;2003&nbsp;2004&nbsp;2004
+Levels:&nbsp;2000&nbsp;2001&nbsp;2002&nbsp;2003&nbsp;2004
+
+</pre>
+
+<div class="p"><!----></div>
+
+<pre>&gt;&nbsp;cut(thetimes,"year")
+[1]&nbsp;02&nbsp;03&nbsp;02&nbsp;02&nbsp;02
+Levels:&nbsp;02&nbsp;&lt;&nbsp;03
+
+</pre>
+
+<br><br><hr><small>File translated from
+T<sub><font size="-1">E</font></sub>X
+by <a href="http://hutchinson.belmont.ma.us/tth/">
+T<sub><font size="-1">T</font></sub>H</a>,
+version 3.67.<br>On  3 Feb 2006, 17:06.</small>
+<script async="" src="./Dates and Times in R_files/analytics.js.download"></script><script>if(window.parent==window){(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-41540427-2","auto",{"siteSpeedSampleRate":100});ga("send","pageview");}</script>
+</body></html>

@@ -1,0 +1,2 @@
+"ClusterId": "j-2SITINRJA0BPG",
+    "ClusterArn": "arn:aws:elasticmapreduce:us-east-1:405503151021:cluster/j-2SITINRJA0BPG"

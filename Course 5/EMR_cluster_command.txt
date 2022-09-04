@@ -1,0 +1,2 @@
+aws emr create-cluster --name "July_2022_type_2" --ec2-attributes SubnetId=subnet-07d50fb16f3839770 --release-label emr-5.31.0 --auto-terminate --log-uri s3://debug-2022-07/ --use-default-roles --enable-debugging --instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=m5.xlarge InstanceGroupType=CORE,InstanceCount=3,InstanceType=m5.xlarge --steps file://250.json
+
